@@ -1,40 +1,39 @@
 # LitElement Internationalisation
 LitElement Internationalisation
 
-## Install
-```sh
-npm install --save lit-element-i18n
-```
-
-## Resources  
-/assets/locales/en/app.json
-```json
-{ "hi": "Hi" }
-```
-/assets/locales/sv/app.json
-```json
-{ "hi": "Hej" }
 ```
 
 ## Usage
 ```js
 import { LitElement, html } from 'lit-element'
-import { i18nMixin, translate } from 'lit-element-i18n'
+import { i18nMixin } from 'lit-element-i18n'
 
 class DemoElement extends i18nMixin(LitElement) {
 
-    constructor(){
-        super();
-        this.languageResources = '/assets/locales/{{lng}}/{{ns}}.json'
+    firstUpdate() {
+        super.firstUpdate();
+
+        // Initialize i18n mixin
+        this.i18nInit({
+            'en': {
+                'app': {
+                    'hi': 'Hello US'
+                }
+            }, 'en-CA': {
+                'app': {
+                    'hi': 'Hello CA'
+                }
+            }
+        });
     }
 
     render() {
         return html`
-            <h1>${translate('app:hi')}</h1>
-            
+            <h1>${this.translate('app:hi')}</h1>
+
             <select @change='${this.changeLanguages}'>
-                <option value='en'>EN</option>
-                <option value='sv'>SV</option>
+                <option value='en-US'>English (US)</option>
+                <option value='en-CA'>English (CA)</option>
             </select>
         `
     }
@@ -45,4 +44,4 @@ class DemoElement extends i18nMixin(LitElement) {
 }
 
 customElements.define('demo-element', DemoElement)
-``` 
+```
