@@ -8,9 +8,11 @@ export const i18nMixin = baseClass => class extends baseClass {
      * Call this function in the firstUpdated() { .. } callback to initialize the mixin.
      * After that, the translation functionality will be applicable.
      *
+     * @param {String} namespace - Namespace in which to include resources. translation is done with the format <namespace>:<translation key>.
      * @param {Object} resources - I18next resources object. See https://www.i18next.com/overview/configuration-options.
+     * @param {String} defaultNamespace - Default namespace to assume when performing translations.
      */
-    i18nInit(resources) {
+    i18nInit(namespace, resources, defaultNamespace) {
 
         if (!i18next.isInitialized) {
 
@@ -19,7 +21,7 @@ export const i18nMixin = baseClass => class extends baseClass {
                 init({
                 lng: navigator.language,
                 resources,
-                defaultNS: 'translations',
+                defaultNS: 'translations', // TODO: Make configurable
                 ns: ['translations'],
                 fallbackLng: 'en-CA'
             })

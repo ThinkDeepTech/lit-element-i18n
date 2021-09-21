@@ -13,8 +13,10 @@ class DemoElement extends i18nMixin(LitElement) {
     firstUpdate() {
         super.firstUpdate();
 
-        // Initialize i18n mixin
-        this.i18nInit({
+        // i18next namespace
+        const namespaceToUseInTranslations = 'app';
+        const defaultNamespaceToAssumeInTranslationsIfNotFound = 'app';
+        this.i18nInit(namespaceToUseInTranslations, {
             'en': {
                 'app': {
                     'hi': 'Hello US'
@@ -24,7 +26,7 @@ class DemoElement extends i18nMixin(LitElement) {
                     'hi': 'Hello CA'
                 }
             }
-        });
+        }, defaultNamespaceToAssumeInTranslationsIfNotFound);
     }
 
     render() {
