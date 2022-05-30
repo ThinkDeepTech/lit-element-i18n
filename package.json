@@ -3,9 +3,6 @@
   "version": "0.1.1",
   "description": "LitElement Internationalization.",
   "main": "lit-element-i18n.js",
-  "scripts": {
-    "demo": "polymer serve"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hamedasemi/lit-element-i18n.git"
@@ -26,8 +23,7 @@
   },
   "homepage": "https://github.com/hamedasemi/lit-element-i18n#readme",
   "devDependencies": {
-    "lit-element": "^2.0.1",
-    "polymer-cli": "^1.9.6"
+    "lit-element": "^2.0.1"
   },
   "dependencies": {
     "i18next": "^19.8.5",
