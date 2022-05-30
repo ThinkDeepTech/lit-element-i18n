@@ -1,4 +1,8 @@
-import i18next, { t as translate } from 'i18next';
+import i18next from 'i18next';
+
+const translate = (key) => {
+    return i18next.t(key);
+}
 
 export const i18nMixin = baseClass => class extends baseClass {
 
@@ -50,7 +54,7 @@ export const i18nMixin = baseClass => class extends baseClass {
      * @returns {String} - Translated result.
      */
     translate(key) {
-        return translate(key)
+        return translate(key);
     }
 }
 
